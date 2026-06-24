@@ -1,0 +1,148 @@
+/* forgot.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #e6eff5 0%, #c5d4e0 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 900px;
+    min-height: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.form-section {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.forgot-header {
+    margin-bottom: 30px;
+}
+
+.forgot-header h2 {
+    font-size: 16px; 
+    color: #111;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.input-group {
+    margin-bottom: 24px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.phone-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1.5px solid #d1d5db;
+    padding-bottom: 5px;
+    transition: border-color 0.3s;
+}
+
+.phone-wrapper:focus-within {
+    border-bottom-color: #1C96ED;
+}
+
+.country-code {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    padding-right: 15px;
+}
+
+input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    color: #333;
+    background: transparent;
+}
+
+input::placeholder {
+    color: #a0aab5;
+}
+
+.helper-text {
+    display: block;
+    font-size: 11px;
+    color: #888;
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+.btn-login {
+    width: 100%;
+    background-color: #1C96ED;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #1C96ED;
+}
+
+.btn-lanjutkan {
+    margin-top: 15px; 
+}
+
+.image-section {
+    flex: 1;
+    background-image: url('/image/login/doctor2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+    .login-card {
+        flex-direction: column;
+    }
+    .image-section {
+        display: none;
+    }
+    .form-section {
+        padding: 30px;
+    }
+}
