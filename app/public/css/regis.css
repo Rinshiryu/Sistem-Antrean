@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #e6eff5 0%, #c5d4e0 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- Card Registrasi --- */
+.register-card {
+    background-color: #fcfcfc; /* Warna putih sedikit lebih soft mirip desain */
+    width: 100%;
+    max-width: 800px; /* Lebih lebar untuk menampung dua kolom */
+    padding: 50px 60px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.register-header {
+    margin-bottom: 40px;
+}
+
+.register-header h2 {
+    font-size: 22px;
+    color: #202020;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.register-header p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* --- Form Layout (Grid 2 Kolom) --- */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 24px;
+}
+
+/* Styling Input Base */
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1.5px solid #d1d5db;
+    padding-bottom: 5px;
+    transition: border-color 0.3s;
+}
+
+.input-wrapper:focus-within {
+    border-bottom-color: #1C96ED;
+}
+
+input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    color: #333;
+    background: transparent;
+}
+
+input::placeholder {
+    color: #a0aab5;
+}
+
+.country-code {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    padding-right: 15px;
+}
+
+.helper-text {
+    display: block;
+    font-size: 11px;
+    color: #888;
+    margin-top: 6px;
+    line-height: 1.4;
+    max-width: 90%;
+}
+
+.btn-toggle-pass {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* --- Button Styling --- */
+.btn-container {
+    display: flex;
+    justify-content: center; /* Memusatkan tombol */
+    margin-top: 40px;
+}
+
+.btn-primary {
+    background-color: #1C96ED;
+    color: white;
+    border: none;
+    padding: 12px 60px; /* Lebar tombol disesuaikan */
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #1C96ED;
+}
+
+/* --- Responsif untuk layar kecil (HP) --- */
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr; /* Berubah jadi 1 kolom di HP */
+        gap: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .register-card {
+        padding: 30px 20px;
+    }
+
+    .btn-primary {
+        width: 100%; /* Tombol full width di HP */
+    }
+}
