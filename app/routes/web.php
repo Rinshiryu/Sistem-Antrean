@@ -11,3 +11,6 @@ Route::get('/main', function () {
 Route::get('/', function () {
     return view('regis');
 });
+Route::get('/', function () {
+    return view('lupaPass');
+});
