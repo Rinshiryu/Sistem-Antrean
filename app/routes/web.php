@@ -14,3 +14,6 @@ Route::get('/', function () {
 Route::get('/', function () {
     return view('lupaPass');
 });
+Route::get('/dashboard-petugas', function () {
+    return view('dashboard-petugas'); 
+});

@@ -1,0 +1,270 @@
+/* Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #e6eef5, #ced9e5);
+    min-height: 100vh;
+    display: flex;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    width: 280px;
+    background-color: #2295F4;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 0;
+    position: fixed;
+    height: 100%;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.logo-icon {
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+}
+
+.logo-icon svg {
+    width: 45px;
+    height: 45px;
+    color: white;
+}
+
+.sidebar h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.nav-menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-left: 4rem;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #bbf7d0; /* Warna hijau muda saat di-hover */
+}
+
+/* --- MAIN CONTENT --- */
+.main-content {
+    margin-left: 280px;
+    flex: 1;
+    padding: 3rem;
+    position: relative;
+}
+
+.top-accent {
+    position: absolute;
+    top: 2.5rem;
+    right: 3rem;
+    width: 180px;
+    height: 45px;
+    background-color: #ccff00;
+    border-radius: 8px;
+}
+
+/* --- GRID ANTRIAN --- */
+.antrian-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-top: 5rem;
+}
+
+.antrian-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+}
+
+.antrian-card h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.badge-kode {
+    border: 1px solid #2295F4;
+    color: #2295F4;
+    padding: 5px 25px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.nomer-display {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.nomer-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nomer-box span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.angka-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.angka-saat-ini {
+    background-color: #2295F4;
+    color: white;
+    box-shadow: 0 4px 6px rgba(34, 149, 244, 0.3);
+}
+
+.angka-selanjutnya {
+    border: 2px solid #2295F4;
+    color: #333;
+}
+
+/* --- BUTTONS --- */
+.btn-selanjutnya {
+    width: 100%;
+    background-color: #2295F4;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.3s;
+}
+
+.btn-selanjutnya:hover {
+    background-color: #1a75c2;
+}
+
+.action-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.btn-lewati {
+    flex: 1;
+    background: transparent;
+    border: 1px solid #2295F4;
+    color: #2295F4;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-lewati:hover {
+    background-color: #f0f8ff;
+}
+
+.btn-notif {
+    background-color: #FFC107;
+    border: none;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-notif svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* --- CATATAN --- */
+.catatan-box {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 3rem;
+    width: 320px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+}
+
+.catatan-box h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.catatan-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.catatan-icon {
+    background-color: #2295F4;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+}
+
+.catatan-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.catatan-item span {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
