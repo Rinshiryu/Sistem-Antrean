@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #e6eff5 0%, #c5d4e0 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 900px;
+    min-height: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Bagian Kiri (Form) --- */
+.form-section {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.brand .logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.brand h1 {
+    font-size: 24px;
+    color: #111;
+    font-weight: 700;
+}
+
+/* Styling Input Group */
+.input-group {
+    margin-bottom: 24px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.phone-wrapper, .password-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1.5px solid #d1d5db;
+    padding-bottom: 5px;
+    transition: border-color 0.3s;
+}
+
+.phone-wrapper:focus-within, .password-wrapper:focus-within {
+    border-bottom-color: #2196F3;
+}
+
+.country-code {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    padding-right: 15px;
+}
+
+input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    color: #333;
+    background: transparent;
+}
+
+input::placeholder {
+    color: #a0aab5;
+}
+
+.helper-text {
+    display: block;
+    font-size: 11px;
+    color: #888;
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+.btn-toggle-pass {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* Form Actions (Lupa Password & Button) */
+.form-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+.text-bold {
+    font-weight: 700;
+    color: #333;
+}
+
+.link-blue {
+    color: #2196F3;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link-blue:hover {
+    text-decoration: underline;
+}
+
+.btn-login {
+    width: 100%;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+.btn-login:hover {
+    background-color: #1976D2;
+}
+
+.register-link {
+    text-align: center;
+    font-size: 13px;
+}
+
+/* --- Bagian Kanan (Gambar) --- */
+.image-section {
+    flex: 1;
+    background-image: url('doctor.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    .login-card {
+        flex-direction: column;
+    }
+    .image-section {
+        display: none; /* Sembunyikan gambar di layar HP agar rapi */
+    }
+    .form-section {
+        padding: 30px;
+    }
+}
