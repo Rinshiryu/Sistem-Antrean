@@ -13,7 +13,7 @@
             
             <div class="form-section">
                 <div class="brand">
-                    <img src="logors.png" alt="Logo BaliMud" class="logo">
+                    <img src="{{ asset('image/login/logos.png')}}" alt="Logo BaliMud" class="logo">
                     <h1>BaliMud</h1>
                 </div>
 
