@@ -6,6 +6,7 @@
     <title>Balimud</title>
 
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
@@ -26,9 +27,33 @@
         Perhatian! harap ambil 1 antrean sesuai dengan poli yang dituju!
     </div>
 
+    @if(session('success'))
+    <div style="
+        background:#d4edda;
+        color:#155724;
+        padding:15px;
+        margin:20px;
+        border-radius:10px;
+        font-weight:bold;
+    ">
+        {{ session('success') }}
+    </div>
+    @endif
+
+    @if($errors->any())
+        <div class="alert-error">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <!-- POLI -->
     <section class="poli-container">
 
+        <!-- POLI UMUM -->
         <div class="poli-card">
             <div class="icon-circle">
                 <i class="fa-solid fa-stethoscope"></i>
@@ -36,11 +61,14 @@
 
             <h2>Poli Umum</h2>
 
-            <span class="kode">Kode a</span>
+            <span class="kode">Kode A</span>
 
-            <button>Ambil Antrian</button>
+            <button onclick="openQueueModal('A')">
+                Ambil Antrean
+            </button>
         </div>
 
+        <!-- POLI GIGI -->
         <div class="poli-card">
             <div class="icon-circle">
                 <i class="fa-solid fa-tooth"></i>
@@ -48,11 +76,14 @@
 
             <h2>Poli Gigi</h2>
 
-            <span class="kode">Kode b</span>
+            <span class="kode">Kode B</span>
 
-            <button>Ambil Antrian</button>
+            <button onclick="openQueueModal('B')">
+                Ambil Antrean
+            </button>
         </div>
 
+        <!-- POLI KIA -->
         <div class="poli-card">
             <div class="icon-circle">
                 <i class="fa-solid fa-children"></i>
@@ -60,11 +91,14 @@
 
             <h2>Poli KIA</h2>
 
-            <span class="kode">Kode c</span>
+            <span class="kode">Kode C</span>
 
-            <button>Ambil Antrian</button>
+            <button onclick="openQueueModal('C')">
+                Ambil Antrean
+            </button>
         </div>
 
+        <!-- POLI THT -->
         <div class="poli-card">
             <div class="icon-circle">
                 <i class="fa-solid fa-ear-listen"></i>
@@ -72,9 +106,11 @@
 
             <h2>Poli THT</h2>
 
-            <span class="kode">Kode d</span>
+            <span class="kode">Kode D</span>
 
-            <button>Ambil Antrian</button>
+            <button onclick="openQueueModal('D')">
+                Ambil Antrean
+            </button>
         </div>
 
     </section>
@@ -84,31 +120,9 @@
 
         <div class="queue-card">
 
-            <h2>Nomer Antrian</h2>
+            <h2>Nomor Antrean</h2>
 
-            <span class="kode">Kode a</span>
-
-            <div class="queue-box">
-
-                <div>
-                    <small>Saat ini</small>
-                    <div class="current">01</div>
-                </div>
-
-                <div>
-                    <small>Selanjutnya</small>
-                    <div class="next">02</div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="queue-card">
-
-            <h2>Nomer Antrian</h2>
-
-            <span class="kode">Kode b</span>
+            <span class="kode">Kode A</span>
 
             <div class="queue-box">
 
@@ -128,9 +142,9 @@
 
         <div class="queue-card">
 
-            <h2>Nomer Antrian</h2>
+            <h2>Nomor Antrean</h2>
 
-            <span class="kode">Kode c</span>
+            <span class="kode">Kode B</span>
 
             <div class="queue-box">
 
@@ -150,9 +164,31 @@
 
         <div class="queue-card">
 
-            <h2>Nomer Antrian</h2>
+            <h2>Nomor Antrean</h2>
 
-            <span class="kode">Kode d</span>
+            <span class="kode">Kode C</span>
+
+            <div class="queue-box">
+
+                <div>
+                    <small>Saat ini</small>
+                    <div class="current">01</div>
+                </div>
+
+                <div>
+                    <small>Selanjutnya</small>
+                    <div class="next">02</div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="queue-card">
+
+            <h2>Nomor Antrean</h2>
+
+            <span class="kode">Kode D</span>
 
             <div class="queue-box">
 
@@ -172,7 +208,82 @@
 
     </section>
 
+    <!-- MODAL ANTREAN -->
+    <div id="queueModal" class="modal-overlay" style="display:none;">
+
+        <div class="modal-box">
+
+            <h3>Form Pengambilan Antrean</h3>
+
+            <form action="{{ route('ambil.antrean') }}"
+                  method="POST">
+
+                @csrf
+
+                <input type="hidden"
+                       name="kode_poli"
+                       id="kode_poli">
+
+                <div class="form-group">
+                    <label>NIK / No KTP</label>
+                    <input type="text"
+                           name="nik"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text"
+                           name="nama_pasien"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>Tanggal Lahir</label>
+                    <input type="date"
+                           name="tanggal_lahir"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>Jadwal Kedatangan</label>
+                    <input type="date"
+                           name="jadwal_kedatangan"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>Keluhan Singkat</label>
+                    <textarea
+                        name="keluhan"
+                        rows="3"
+                        required></textarea>
+                </div>
+
+                <div class="modal-actions">
+
+                    <button type="button"
+                            class="btn-cancel"
+                            onclick="closeQueueModal()">
+                        Batal
+                    </button>
+
+                    <button type="submit"
+                            class="btn-submit">
+                        Ambil Antrean
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
     <footer></footer>
+
+    <script src="{{ asset('js/main.js') }}"></script>
 
 </body>
 </html>
