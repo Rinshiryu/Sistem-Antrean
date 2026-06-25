@@ -36,17 +36,15 @@ class AuthController {
 
     // Method untuk menangani proses submit (simulasi)
     handleLoginSubmit(event) {
-        event.preventDefault(); // Mencegah reload halaman
 
-        const phoneVal = this.phoneInput.value;
         const passVal = this.passwordInput.value;
 
-        // Simulasi validasi atau pengiriman data
-        console.log(`[OOP] Percobaan Login:`);
-        console.log(`No Telp: +62${phoneVal}`);
-        console.log(`Password: ${passVal ? 'Terisi' : 'Kosong'}`);
-        
-        alert(`Login diproses menggunakan metode OOP! \nNomor: +62${phoneVal}`);
+        if (!passVal.trim()) {
+            event.preventDefault();
+            alert('Password harus diisi!');
+            return;
+        }
+
     }
 }
 

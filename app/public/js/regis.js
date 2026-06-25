@@ -43,22 +43,16 @@ class RegisterController {
 
     // Method untuk validasi dan submit form
     handleRegisterSubmit(event) {
-        event.preventDefault();
 
         const passVal = this.passwordInput.value;
         const confirmPassVal = this.confirmPasswordInput.value;
 
-        // Contoh validasi OOP sederhana
         if (passVal !== confirmPassVal) {
-            alert('Gagal: Password dan Konfirmasi Password tidak cocok!');
-            return; // Hentikan proses jika gagal
-        }
+            event.preventDefault();
 
-        console.log('[OOP] Registrasi Berhasil!');
-        console.log('Nama:', document.getElementById('reg-name').value);
-        console.log('Telepon: +62' + document.getElementById('reg-phone').value);
-        
-        alert('Registrasi berhasil disimulasikan secara OOP!');
+            alert('Password dan Konfirmasi Password tidak cocok!');
+            return;
+        }
     }
 }
 
