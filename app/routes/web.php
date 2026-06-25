@@ -19,3 +19,6 @@ Route::get('/register', function () {
 });
 Route::post('/register', [AuthController::class, 'register'])
     ->name('register');
+Route::get('/', function () {
+    return view('lupaPass');
+});
