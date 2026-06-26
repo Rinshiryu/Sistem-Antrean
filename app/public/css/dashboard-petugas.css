@@ -1,4 +1,3 @@
-/* Import Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
 * {
@@ -74,7 +73,7 @@ body {
 }
 
 .nav-menu a:hover {
-    color: #bbf7d0; /* Warna hijau muda saat di-hover */
+    color: #bbf7d0;
 }
 
 /* --- MAIN CONTENT --- */
@@ -95,12 +94,39 @@ body {
     border-radius: 8px;
 }
 
+/* --- TOMBOL TAMBAH PASIEN (BARU) --- */
+.btn-tambah-pasien {
+    background-color: #10B981;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-tambah-pasien svg {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-tambah-pasien:hover {
+    background-color: #059669;
+    transform: translateY(-2px);
+}
+
 /* --- GRID ANTRIAN --- */
 .antrian-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 2rem;
-    margin-top: 5rem;
 }
 
 .antrian-card {
@@ -169,6 +195,31 @@ body {
 .angka-selanjutnya {
     border: 2px solid #2295F4;
     color: #333;
+}
+
+.btn-edit-manual {
+    position: absolute;
+    top: -10px;
+    right: -15px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    color: #555;
+    transition: 0.2s;
+}
+
+.btn-edit-manual:hover {
+    background-color: #f0f8ff;
+    color: #2295F4;
+    border-color: #2295F4;
+}
+
+.btn-edit-manual svg {
+    width: 16px;
+    height: 16px;
 }
 
 /* --- BUTTONS --- */
@@ -267,4 +318,107 @@ body {
 .catatan-item span {
     font-size: 0.85rem;
     font-weight: 700;
+}
+
+/* --- MODAL STYLES  --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-box h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: #333;
+    border-bottom: 2px solid #e6eef5;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: #2295F4;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 2rem;
+}
+
+.btn-batal {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #555;
+    transition: 0.3s;
+}
+
+.btn-batal:hover {
+    background: #f0f8ff;
+    color: #333;
+}
+
+.btn-simpan {
+    padding: 10px 20px;
+    border: none;
+    background: #2295F4;
+    color: white;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(34, 149, 244, 0.3);
+    transition: 0.3s;
+}
+
+.btn-simpan:hover {
+    background: #1a75c2;
 }
