@@ -1,18 +1,25 @@
 <?php
-namespace App\Models;
-use Illuminate\Database\Eloquent\Model;
-public function pasien()
-{
-    return $this->belongsTo(
-        Pasien::class,
-        'id_pasien'
-    );
-}
 
-public function poli()
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Antrean extends Model
 {
-    return $this->belongsTo(
-        Poli::class,
+    protected $table = 'antrean';
+
+    protected $primaryKey = 'id_antrean';
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'tanggal_periksa',
+        'nomor_urut',
+        'kode_poli',
+        'jadwal_kedatangan',
+        'status',
+        'id_pasien',
+        'id_akun',
         'id_poli'
-    );
+    ];
 }

@@ -41,3 +41,11 @@ Route::prefix('petugas/antrean')->group(function () {
     Route::post('/manual', [AntreanController::class, 'manualAntrean']);
     Route::post('/tambah-pasien', [AntreanController::class, 'tambahPasienBaru']);
 });
+// Route::get('/', function () {
+//     return view('lupaPass');
+// });
+Route::get('/dashboard-petugas', function () {
+    return view('dashboard-petugas'); 
+
+});\Route::post('/ambil-antrean', [AntreanController::class, 'store'])
+    ->name('ambil.antrean');

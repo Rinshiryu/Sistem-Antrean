@@ -1,10 +1,21 @@
 <?php
+
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
-public function akun()
+
+class Pasien extends Model
 {
-    return $this->belongsTo(
-        AkunPengguna::class,
+    protected $table = 'pasien';
+
+    protected $primaryKey = 'id_pasien';
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'nama_pasien',
+        'tanggal_lahir',
+        'keluhan',
         'id_akun'
-    );
+    ];
 }
