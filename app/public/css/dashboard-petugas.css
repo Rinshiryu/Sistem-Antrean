@@ -75,7 +75,15 @@ body {
 .nav-menu a:hover {
     color: #bbf7d0;
 }
-
+.logout-btn{
+    background:none;
+    border:none;
+    color:inherit;
+    cursor:pointer;
+    font:inherit;
+    padding:0;
+    text-decoration:none;
+}
 /* --- MAIN CONTENT --- */
 .main-content {
     margin-left: 280px;
@@ -125,24 +133,27 @@ body {
 /* --- GRID ANTRIAN --- */
 .antrian-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 30px;
 }
 
 .antrian-card {
-    background: white;
+    background: #fff;
     border-radius: 16px;
-    padding: 1.5rem;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+    justify-content: space-between;
+    box-shadow: 0 8px 30px rgba(0,0,0,.05);
+    min-height: 330px;
 }
-
 .antrian-card h2 {
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
+    text-align: center;
 }
 
 .badge-kode {
@@ -153,6 +164,9 @@ body {
     font-size: 0.8rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
+    text-align: center;
+    width: fit-content;
+    align-self: center;
 }
 
 .nomer-display {
@@ -201,25 +215,39 @@ body {
     position: absolute;
     top: -10px;
     right: -15px;
-    background: white;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+
+    background: #fff;
     border: 1px solid #ccc;
     border-radius: 50%;
-    padding: 5px;
+
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,.12);
+
     color: #555;
-    transition: 0.2s;
+    transition: .2s;
 }
 
 .btn-edit-manual:hover {
-    background-color: #f0f8ff;
-    color: #2295F4;
+    background: #f0f8ff;
     border-color: #2295F4;
+    color: #2295F4;
 }
 
 .btn-edit-manual svg {
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
+    display: block;
+    flex-shrink: 0;
+    transform: translate(0.5px, -0.5px);
 }
 
 /* --- BUTTONS --- */
@@ -245,6 +273,7 @@ body {
     display: flex;
     gap: 10px;
     width: 100%;
+    margin-top: auto;
 }
 
 .btn-lewati {
@@ -421,4 +450,19 @@ body {
 
 .btn-simpan:hover {
     background: #1a75c2;
+}
+
+/* responsive */
+/* Laptop kecil */
+@media (max-width: 1200px){
+    .antrian-grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+/* Tablet */
+@media (max-width:768px){
+    .antrian-grid{
+        grid-template-columns:1fr;
+    }
 }

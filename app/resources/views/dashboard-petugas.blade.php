@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboard Petugas - BALIMUD</title>
+    <link rel="icon" type="image/png" href="{{ asset('image/login/logors.png') }}">
     
     <link rel="stylesheet" href="{{ asset('css/dashboard-petugas.css') }}">
 </head>
@@ -26,7 +27,12 @@
 
         <nav class="nav-menu">
             <a href="#">Home</a>
-            <a href="#">Logout</a>
+            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                @csrf
+                <button type="submit" class="logout-btn">
+                    Logout
+                </button>
+            </form>
         </nav>
     </aside>
 
@@ -44,14 +50,14 @@
             @foreach ($polis as $poli)
             <div class="antrian-card">
                 <h2>{{ $poli->nama_poli ?? 'Nomer Antrian' }}</h2>
-                <div class="badge-kode">ID Poli: {{ $poli->id_poli }}</div>
+                <div class="badge-kode">Kode Poli: {{ $poli->kode_poli }}</div>
 
                 <div class="nomer-display">
                     <div class="nomer-box" style="position: relative;">
                         <span>Saat ini</span>
-                        <div class="angka-box angka-saat-ini" id="current-{{ $poli->id_poli }}">--</div>
+                        <div class="angka-box angka-saat-ini" id="current-{{ $poli->kode_poli }}">--</div>
                         
-                        <button onclick="editManual({{ $poli->id_poli }})" class="btn-edit-manual">
+                        <button onclick="editManual({{ $poli->kode_poli }})" class="btn-edit-manual">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                             </svg>
@@ -60,14 +66,14 @@
 
                     <div class="nomer-box">
                         <span>Selanjutnya</span>
-                        <div class="angka-box angka-selanjutnya" id="next-{{ $poli->id_poli }}">--</div>
+                        <div class="angka-box angka-selanjutnya" id="next-{{ $poli->kode_poli }}">--</div>
                     </div>
                 </div>
 
-                <button onclick="handleAntrean('next', {{ $poli->id_poli }})" class="btn-selanjutnya">Selanjutnya</button>
+                <button onclick="handleAntrean('next', {{ $poli->kode_poli }})" class="btn-selanjutnya">Selanjutnya</button>
                 <div class="action-row">
-                    <button onclick="handleAntrean('skip', {{ $poli->id_poli }})" class="btn-lewati">Lewati</button>
-                    <button onclick="handleAntrean('recall', {{ $poli->id_poli }})" class="btn-notif">
+                    <button onclick="handleAntrean('skip', {{ $poli->kode_poli }})" class="btn-lewati">Lewati</button>
+                    <button onclick="handleAntrean('recall', {{ $poli->kode_poli }})" class="btn-notif">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                         </svg>

@@ -4,48 +4,80 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AntreanController;
 
+/*
+|--------------------------------------------------------------------------
+| AUTH
+|--------------------------------------------------------------------------
+*/
+
+// Halaman Login
 Route::get('/', function () {
     return view('login');
-});
+})->name('login');
 
-Route::post('/login', [AuthController::class, 'login'])
-    ->name('login');
+// Proses Login
+Route::post('/', [AuthController::class, 'login']);
 
-Route::get('/main', function () {
-    if (!session()->has('id_akun')) {
-        return redirect('/');
-    }
-    return view('main');
-});
+// Logout
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->name('logout');
 
+// Halaman Register
 Route::get('/register', function () {
     return view('regis');
-});
+})->name('register.form');
 
+// Proses Register
 Route::post('/register', [AuthController::class, 'register'])
     ->name('register');
 
-// Route::get('/', function () {
-//     return view('lupaPass');
-// });
+
+/*
+|--------------------------------------------------------------------------
+| HALAMAN PASIEN
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/main', function () {
+
+    if (!session()->has('id_akun')) {
+        return redirect('/');
+    }
+
+    return view('main');
+
+})->name('main');
+
+// Ambil nomor antrean
+Route::post('/ambil-antrean', [AntreanController::class, 'store'])
+    ->name('ambil.antrean');
+
+// Status antrean realtime
+Route::get('/status-antrean', [AntreanController::class, 'statusAntrean'])
+    ->name('status.antrean');
 
 
-Route::get('/dashboard-petugas', [AntreanController::class, 'index']);
+/*
+|--------------------------------------------------------------------------
+| HALAMAN PETUGAS
+|--------------------------------------------------------------------------
+*/
 
+Route::get('/dashboard-petugas', [AntreanController::class, 'index'])
+    ->name('dashboard-petugas');
 
 Route::prefix('petugas/antrean')->group(function () {
-    Route::post('/next', [AntreanController::class, 'nextAntrean']);
-    Route::post('/skip', [AntreanController::class, 'skipAntrean']);
-    Route::post('/recall', [AntreanController::class, 'recallAntrean']);
-    Route::get('/live-data', [AntreanController::class, 'getLiveData']);
-    Route::post('/manual', [AntreanController::class, 'manualAntrean']);
-    Route::post('/tambah-pasien', [AntreanController::class, 'tambahPasienBaru']);
-});
-// Route::get('/', function () {
-//     return view('lupaPass');
-// });
-Route::get('/dashboard-petugas', function () {
-    return view('dashboard-petugas'); 
 
-});\Route::post('/ambil-antrean', [AntreanController::class, 'store'])
-    ->name('ambil.antrean');
+    Route::get('/live-data', [AntreanController::class, 'getLiveData']);
+
+    Route::post('/next', [AntreanController::class, 'nextAntrean']);
+
+    Route::post('/skip', [AntreanController::class, 'skipAntrean']);
+
+    Route::post('/recall', [AntreanController::class, 'recallAntrean']);
+
+    Route::post('/manual', [AntreanController::class, 'manualAntrean']);
+
+    Route::post('/tambah-pasien', [AntreanController::class, 'tambahPasienBaru']);
+
+});

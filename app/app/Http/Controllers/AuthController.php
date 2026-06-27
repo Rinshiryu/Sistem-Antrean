@@ -32,7 +32,10 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        $akun = AkunPengguna::where('username', $request->username)->first();
+        $akun = AkunPengguna::where(
+            'username',
+            $request->username
+        )->first();
 
         if (!$akun) {
             return back()->withErrors([
@@ -52,10 +55,17 @@ class AuthController extends Controller
             'role' => $akun->role
         ]);
 
-        if ($akun->role === 'petugas') {
-            return redirect('/dashboard-petugas');
+        if ($akun->role == 'petugas') {
+            return redirect()->route('dashboard-petugas');
         }
 
-        return redirect('/main');
+        return redirect()->route('main');
+    }
+    public function logout(Request $request)
+    {
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
