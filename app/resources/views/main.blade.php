@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Balimud</title>
-
+    <link rel="icon" type="image/png" href="{{ asset('image/login/logors.png') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
     <link rel="stylesheet"
@@ -118,6 +118,7 @@
     <!-- STATUS ANTREAN -->
     <section class="queue-container">
 
+        <!-- POLI A -->
         <div class="queue-card">
 
             <h2>Nomor Antrean</h2>
@@ -128,18 +129,19 @@
 
                 <div>
                     <small>Saat ini</small>
-                    <div class="current">01</div>
+                    <div class="current" id="current-A">--</div>
                 </div>
 
                 <div>
                     <small>Selanjutnya</small>
-                    <div class="next">02</div>
+                    <div class="next" id="next-A">--</div>
                 </div>
 
             </div>
 
         </div>
 
+        <!-- POLI B -->
         <div class="queue-card">
 
             <h2>Nomor Antrean</h2>
@@ -150,18 +152,19 @@
 
                 <div>
                     <small>Saat ini</small>
-                    <div class="current">01</div>
+                    <div class="current" id="current-B">--</div>
                 </div>
 
                 <div>
                     <small>Selanjutnya</small>
-                    <div class="next">02</div>
+                    <div class="next" id="next-B">--</div>
                 </div>
 
             </div>
 
         </div>
 
+        <!-- POLI C -->
         <div class="queue-card">
 
             <h2>Nomor Antrean</h2>
@@ -172,18 +175,19 @@
 
                 <div>
                     <small>Saat ini</small>
-                    <div class="current">01</div>
+                    <div class="current" id="current-C">--</div>
                 </div>
 
                 <div>
                     <small>Selanjutnya</small>
-                    <div class="next">02</div>
+                    <div class="next" id="next-C">--</div>
                 </div>
 
             </div>
 
         </div>
 
+        <!-- POLI D -->
         <div class="queue-card">
 
             <h2>Nomor Antrean</h2>
@@ -194,12 +198,12 @@
 
                 <div>
                     <small>Saat ini</small>
-                    <div class="current">01</div>
+                    <div class="current" id="current-D">--</div>
                 </div>
 
                 <div>
                     <small>Selanjutnya</small>
-                    <div class="next">02</div>
+                    <div class="next" id="next-D">--</div>
                 </div>
 
             </div>

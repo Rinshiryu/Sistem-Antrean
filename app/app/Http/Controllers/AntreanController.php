@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Pasien;
+use App\Models\Antrean;
+use App\Models\Poli;
 class AntreanController extends Controller
 {
     public function index()
@@ -24,11 +26,13 @@ class AntreanController extends Controller
         foreach ($polis as $poli) {
             $current = DB::table('antrean')
                 ->where('id_poli', $poli->id_poli)
+                ->whereDate('tanggal_periksa', now())
                 ->where('status', 'dipanggil')
                 ->first();
 
             $next = DB::table('antrean')
                 ->where('id_poli', $poli->id_poli)
+                ->whereDate('tanggal_periksa', now())
                 ->where('status', 'menunggu')
                 ->orderBy('nomor_urut', 'asc')
                 ->first();
@@ -50,12 +54,14 @@ class AntreanController extends Controller
 
         DB::table('antrean')
             ->where('id_poli', $idPoli)
+            ->whereDate('tanggal_periksa', now())
             ->where('status', 'dipanggil')
             ->update(['status' => 'selesai']);
 
         $target = DB::table('antrean')
             ->where('id_poli', $idPoli)
             ->where('nomor_urut', $nomorBaru)
+            ->whereDate('tanggal_periksa', now())
             ->first();
 
         if ($target) {
@@ -86,6 +92,7 @@ class AntreanController extends Controller
 
         $next = DB::table('antrean')
             ->where('id_poli', $idPoli)
+            ->whereDate('tanggal_periksa', now())
             ->where('status', 'menunggu')
             ->orderBy('nomor_urut', 'asc')
             ->first();
@@ -113,6 +120,7 @@ class AntreanController extends Controller
 
         $next = DB::table('antrean')
             ->where('id_poli', $idPoli)
+            ->whereDate('tanggal_periksa', now())
             ->where('status', 'menunggu')
             ->orderBy('nomor_urut', 'asc')
             ->first();
@@ -138,11 +146,13 @@ class AntreanController extends Controller
         $current = DB::table('antrean')
             ->where('id_poli', $idPoli)
             ->where('status', 'dipanggil')
+            ->whereDate('tanggal_periksa', now())
             ->first();
 
         $next = DB::table('antrean')
             ->where('id_poli', $idPoli)
             ->where('status', 'menunggu')
+            ->whereDate('tanggal_periksa', now())
             ->orderBy('nomor_urut', 'asc')
             ->first();
 
@@ -192,12 +202,8 @@ class AntreanController extends Controller
             'status' => 'success',
             'message' => "Pasien $nama berhasil didaftarkan ke Poli $idPoli dengan Nomor $nomorBaru!"
         ]);
-use App\Models\Pasien;
-use App\Models\Antrean;
-use App\Models\Poli;
+    }
 
-class AntreanController extends Controller
-{
     public function store(Request $request)
     {
         $request->validate([
@@ -264,5 +270,37 @@ class AntreanController extends Controller
 
         return redirect('/main')
             ->with('success', 'Nomor antrean Anda: ' . $nomorAntrean);
+    }
+    public function statusAntrean()
+    {
+        $polis = Poli::all();
+
+        $data = [];
+
+        foreach($polis as $poli)
+        {
+            $current = Antrean::where('id_poli',$poli->id_poli)
+                ->whereDate('tanggal_periksa',today())
+                ->where('status','dipanggil')
+                ->first();
+
+            $next = Antrean::where('id_poli',$poli->id_poli)
+                ->whereDate('tanggal_periksa',today())
+                ->where('status','menunggu')
+                ->orderBy('nomor_urut')
+                ->first();
+
+            $data[] = [
+                'kode'=>$poli->kode_poli,
+                'current'=>$current
+                    ? str_pad($current->nomor_urut,2,'0',STR_PAD_LEFT)
+                    : '--',
+                'next'=>$next
+                    ? str_pad($next->nomor_urut,2,'0',STR_PAD_LEFT)
+                    : '--'
+            ];
+        }
+
+        return response()->json($data);
     }
 }
