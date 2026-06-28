@@ -165,7 +165,7 @@ class AntreanController extends Controller
         ]);
     }
 
-    public function tambahPasienBaru(Request $request)
+public function tambahPasienBaru(Request $request)
     {
         $nama = $request->nama_pasien;
         $tglLahir = $request->tanggal_lahir;
@@ -173,12 +173,13 @@ class AntreanController extends Controller
 
         $idAkun = session('id_akun', 1); 
 
+        $poliMaster = DB::table('poli')->where('id_poli', $idPoli)->first();
+
         $idPasienBaru = DB::table('pasien')->insertGetId([
             'nama_pasien' => $nama,
             'tanggal_lahir' => $tglLahir,
             'id_akun' => $idAkun 
         ]);
-
 
         $lastAntrean = DB::table('antrean')
             ->where('id_poli', $idPoli)
@@ -186,11 +187,12 @@ class AntreanController extends Controller
             ->orderBy('nomor_urut', 'desc')
             ->first();
 
-
         $nomorBaru = $lastAntrean ? $lastAntrean->nomor_urut + 1 : 1;
 
         DB::table('antrean')->insert([
             'tanggal_periksa' => now()->toDateString(),
+            'jadwal_kedatangan' => now()->toDateString(),
+            'kode_poli' => $poliMaster ? $poliMaster->kode_poli : null,
             'nomor_urut' => $nomorBaru,
             'status' => 'menunggu',
             'id_pasien' => $idPasienBaru,

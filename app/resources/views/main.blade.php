@@ -284,7 +284,12 @@
         </div>
 
     </div>
-
+        <form action="{{ route('logout') }}" method="POST" class="logout-form-float">
+            @csrf
+            <button type="submit" class="btn-logout-float" title="Logout dari Sistem">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+        </form>
     <footer></footer>
 
     <script src="{{ asset('js/main.js') }}"></script>
