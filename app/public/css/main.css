@@ -277,3 +277,34 @@ footer{
     border-top-left-radius:40px;
     border-top-right-radius:40px;
 }
+
+/* TOMBOL LOGOUT FLOAT */
+.logout-form-float {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 999;
+}
+
+.btn-logout-float {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(239, 68, 68, 0.4);
+    transition: all 0.3s ease;
+}
+
+/* Animasi saat disorot mouse */
+.btn-logout-float:hover {
+    background-color: #dc2626;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(239, 68, 68, 0.6);
+}
